@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description"
+        content="VELOUR — Luxury contemporary fashion for the discerning. Explore our curated collections of premium clothing." />
+    <title>VELOUR — Luxury Fashion Brand</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --ivory: #f8f5ef;
+            --ivory2: #f0ece4;
+            --beige: #e8e0d0;
+            --charcoal: #1a1814;
+            --charcoal2: #252018;
+            --charcoal3: #2e2820;
+            --gold: #b8973e;
+            --gold2: #d4b45a;
+            --rose: #c77b6e;
+            --white: #fff;
+            --muted: #8a8070;
+            --text: #3a3228;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Inter', sans-serif;
+            --ease: cubic-bezier(.25, .46, .45, .94);
+            --ease-out: cubic-bezier(.16, 1, .3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--ivory);
+            color: var(--text);
+            font-family: var(--sans);
+            overflow-x: hidden
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        ul {
+            list-style: none
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--ivory)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold)
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4%;
+            transition: background .5s, box-shadow .5s
+        }
+
+        nav.scrolled {
+            background: rgba(248, 245, 239, .95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(184, 151, 62, .15)
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: .25em;
+            color: var(--charcoal);
+            text-transform: uppercase
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem
+        }
+
+        .nav-links a {
+            font-size: .72rem;
+            font-weight: 500;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            transition: color .3s;
+            position: relative
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width .3s
+        }
+
+        .nav-links a:hover {
+            color: var(--charcoal)
+        }
+
+        .nav-links a:hover::after {
+            width: 100%
+        }
+
+        .nav-cta {
+            border: 1px solid var(--charcoal) !important;
+            color: var(--charcoal) !important;
+            padding: .5rem 1.3rem;
+            border-radius: 0 !important;
+            transition: all .3s !important
+        }
+
+        .nav-cta:hover {
+            background: var(--charcoal) !important;
+            color: #fff !important
+        }
+
+        .nav-cta::after {
+            display: none !important
+        }
+
+        .menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 22px;
+            height: 1px;
+            background: var(--charcoal);
+            transition: transform .3s, opacity .3s
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: rgba(248, 245, 239, .98);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 5%;
+            gap: 1rem;
+            z-index: 899;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: transform .4s, opacity .4s;
+            pointer-events: none
+        }
+
+        .mobile-nav.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+            display: flex
+        }
+
+        .mobile-nav a {
+            font-size: .82rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: var(--muted);
+            padding: .6rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .06)
+        }
+
+        .mobile-nav a:hover {
+            color: var(--charcoal)
+        }
+
+        .mobile-nav a:last-child {
+            border: 1px solid var(--charcoal);
+            text-align: center;
+            padding: .65rem;
+            border-bottom: 1px solid var(--charcoal)
+        }
+
+        /* HERO */
+        #hero {
+            height: 100svh;
+            min-height: 600px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-left {
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-left img {
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.06);
+            animation: hzoom 12s var(--ease) forwards
+        }
+
+        @keyframes hzoom {
+            to {
+                transform: scale(1)
+            }
+        }
+
+        .hero-left::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(26, 24, 20, .15) 0%, transparent 70%)
+        }
+
+        .hero-right {
+            background: var(--charcoal);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 8%;
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero-right::before {
+            content: 'VELOUR';
+            font-family: var(--serif);
+            font-size: 12rem;
+            position: absolute;
+            right: -2rem;
+            bottom: -2rem;
+            color: rgba(255, 255, 255, .02);
+            letter-spacing: .1em;
+            pointer-events: none;
+            white-space: nowrap
+        }
+
+        .hero-eyebrow {
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            display: block
+        }
+
+        .hero-h1 {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 5vw, 5.5rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 1.5rem
+        }
+
+        .hero-h1 em {
+            font-style: italic;
+            color: var(--gold2);
+            display: block
+        }
+
+        .hero-p {
+            font-size: .95rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, .5);
+            max-width: 340px;
+            margin-bottom: 3rem
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap
+        }
+
+        .btn-gold {
+            display: inline-block;
+            background: var(--gold);
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: .85rem 2.2rem;
+            transition: background .3s, transform .3s, box-shadow .3s;
+            border: none;
+            cursor: pointer
+        }
+
+        .btn-gold:hover {
+            background: var(--gold2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(184, 151, 62, .35)
+        }
+
+        .btn-light {
+            display: inline-block;
+            background: transparent;
+            color: rgba(255, 255, 255, .6);
+            font-size: .72rem;
+            font-weight: 500;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: .85rem 2.2rem;
+            border: 1px solid rgba(255, 255, 255, .2);
+            transition: all .3s
+        }
+
+        .btn-light:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px)
+        }
+
+        .hero-scroll-v {
+            position: absolute;
+            bottom: 3rem;
+            right: 4%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .6rem
+        }
+
+        .hero-scroll-v span {
+            font-size: .65rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .3);
+            writing-mode: vertical-rl;
+            text-orientation: mixed
+        }
+
+        .scroll-vline {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(184, 151, 62, 0), var(--gold));
+            animation: vscroll 2s infinite
+        }
+
+        @keyframes vscroll {
+
+            0%,
+            100% {
+                opacity: .3
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        /* MARQUEE */
+        .mq-wrap {
+            overflow: hidden;
+            background: var(--charcoal);
+            padding: .85rem 0
+        }
+
+        .mq-track {
+            display: flex;
+            width: max-content;
+            animation: mqL 30s linear infinite;
+            gap: 3rem;
+            align-items: center
+        }
+
+        @keyframes mqL {
+            from {
+                transform: translateX(0)
+            }
+
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        .mq-track span {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-style: italic;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, .4);
+            white-space: nowrap;
+            font-weight: 300
+        }
+
+        .mq-track .sep {
+            width: 32px;
+            height: 1px;
+            background: rgba(184, 151, 62, .3);
+            flex-shrink: 0
+        }
+
+        .mq-wrap.light {
+            background: var(--beige)
+        }
+
+        .mq-wrap.light .mq-track span {
+            color: var(--muted)
+        }
+
+        .mq-wrap.light .mq-track {
+            animation-name: mqR;
+            animation-duration: 35s
+        }
+
+        @keyframes mqR {
+            from {
+                transform: translateX(-50%)
+            }
+
+            to {
+                transform: translateX(0)
+            }
+        }
+
+        /* COLLECTIONS */
+        #collections {
+            padding: 7rem 5%;
+            background: var(--ivory)
+        }
+
+        .col-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem
+        }
+
+        .col-head-left {}
+
+        .lbl {
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .7rem;
+            display: block
+        }
+
+        .sec-h {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--charcoal)
+        }
+
+        .sec-h em {
+            font-style: italic;
+            color: var(--gold)
+        }
+
+        .sec-h.center {
+            text-align: center
+        }
+
+        .body {
+            font-size: .93rem;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 1rem
+        }
+
+        .view-all {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 2px;
+            transition: color .3s
+        }
+
+        .view-all:hover {
+            color: var(--gold)
+        }
+
+        .coll-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            grid-template-rows: 500px;
+            gap: 3px
+        }
+
+        .coll-card {
+            position: relative;
+            overflow: hidden
+        }
+
+        .coll-card-img {
+            height: 100%;
+            overflow: hidden
+        }
+
+        .coll-card-img img {
+            transition: transform .9s var(--ease)
+        }
+
+        .coll-card:hover .coll-card-img img {
+            transform: scale(1.06)
+        }
+
+        .coll-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 24, 20, .75) 0%, rgba(26, 24, 20, .1) 55%, transparent 100%)
+        }
+
+        .coll-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 2
+        }
+
+        .coll-season {
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--gold2);
+            margin-bottom: .5rem;
+            display: block
+        }
+
+        .coll-body h3 {
+            font-family: var(--serif);
+            font-size: 1.7rem;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: .3rem
+        }
+
+        .coll-link {
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .5);
+            transition: color .3s;
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem
+        }
+
+        .coll-card:hover .coll-link {
+            color: var(--gold2)
+        }
+
+        /* ABOUT */
+        #about {
+            padding: 7rem 5%;
+            background: #fff
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center
+        }
+
+        .about-imgs {
+            position: relative;
+            height: 580px
+        }
+
+        .about-main {
+            height: 100%;
+            border-radius: 0;
+            overflow: hidden;
+            background: var(--beige)
+        }
+
+        .about-main img {
+            transition: transform 7s var(--ease)
+        }
+
+        .about-main:hover img {
+            transform: scale(1.04)
+        }
+
+        .about-float {
+            position: absolute;
+            top: 3rem;
+            right: -3rem;
+            width: 200px;
+            height: 260px;
+            overflow: hidden;
+            border: 6px solid #fff;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, .12)
+        }
+
+        .about-year {
+            position: absolute;
+            bottom: 2rem;
+            left: -2rem;
+            background: var(--charcoal);
+            padding: 1.2rem 1.8rem;
+            font-family: var(--serif)
+        }
+
+        .about-year strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1
+        }
+
+        .about-year span {
+            font-size: .68rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .4)
+        }
+
+        .about-copy {}
+
+        .about-features {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem
+        }
+
+        .af {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            font-size: .88rem;
+            color: var(--text)
+        }
+
+        .af::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--gold);
+            flex-shrink: 0
+        }
+
+        /* PROCESS / CRAFT */
+        #craft {
+            padding: 7rem 5%;
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden
+        }
+
+        #craft::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=50') center/cover no-repeat;
+            opacity: .04
+        }
+
+        .craft-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .craft-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, .06);
+            margin-top: 3.5rem
+        }
+
+        .cs-card {
+            background: var(--charcoal2);
+            padding: 3rem 2rem;
+            position: relative;
+            transition: background .3s
+        }
+
+        .cs-card:hover {
+            background: var(--charcoal3)
+        }
+
+        .cs-num {
+            font-family: var(--serif);
+            font-size: 4rem;
+            font-weight: 300;
+            color: rgba(184, 151, 62, .2);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            transition: color .3s
+        }
+
+        .cs-card:hover .cs-num {
+            color: rgba(184, 151, 62, .5)
+        }
+
+        .cs-card h3 {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: .7rem
+        }
+
+        .cs-card p {
+            font-size: .85rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .4)
+        }
+
+        .cs-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: var(--gold);
+            transition: width .5s var(--ease-out)
+        }
+
+        .cs-card:hover .cs-line {
+            width: 100%
+        }
+
+        /* FEATURED PRODUCTS */
+        #featured {
+            padding: 7rem 5%;
+            background: var(--ivory2)
+        }
+
+        .prod-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem
+        }
+
+        .prod-card {
+            background: #fff;
+            border-radius: 0;
+            cursor: pointer;
+            transition: box-shadow .3s
+        }
+
+        .prod-card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .08)
+        }
+
+        .prod-img {
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+            background: var(--ivory)
+        }
+
+        .prod-img img {
+            transition: transform .8s var(--ease)
+        }
+
+        .prod-card:hover .prod-img img {
+            transform: scale(1.06)
+        }
+
+        .prod-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--charcoal);
+            color: #fff;
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .3rem .7rem
+        }
+
+        .prod-body {
+            padding: 1.2rem 1rem
+        }
+
+        .prod-body h4 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: .3rem
+        }
+
+        .prod-body .cat {
+            font-size: .72rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: .7rem;
+            display: block
+        }
+
+        .prod-body .price {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--gold)
+        }
+
+        .prod-colors {
+            display: flex;
+            gap: .4rem;
+            margin-top: .7rem
+        }
+
+        .pc {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(0, 0, 0, .1);
+            cursor: pointer;
+            transition: transform .2s
+        }
+
+        .pc:hover {
+            transform: scale(1.3)
+        }
+
+        /* LOOKBOOK */
+        #lookbook {
+            padding: 7rem 5%;
+            background: var(--charcoal);
+            overflow: hidden
+        }
+
+        .lb-inner {
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .lb-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 280px 280px;
+            gap: 4px;
+            margin-top: 3rem
+        }
+
+        .lb-item {
+            overflow: hidden;
+            position: relative
+        }
+
+        .lb-item.tall {
+            grid-row: span 2
+        }
+
+        .lb-item.wide {
+            grid-column: span 2
+        }
+
+        .lb-item img {
+            transition: transform .9s var(--ease);
+            height: 100%
+        }
+
+        .lb-item:hover img {
+            transform: scale(1.06)
+        }
+
+        .lb-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 24, 20, 0);
+            transition: background .3s
+        }
+
+        .lb-item:hover::after {
+            background: rgba(26, 24, 20, .15)
+        }
+
+        /* STATS */
+        #stats {
+            padding: 5rem 5%;
+            background: var(--ivory)
+        }
+
+        .stats-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center
+        }
+
+        .st-item {
+            padding: 2.5rem 1rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color .3s
+        }
+
+        .st-item:hover {
+            border-color: var(--gold)
+        }
+
+        .st-n {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            font-weight: 300;
+            color: var(--charcoal);
+            line-height: 1;
+            display: inline
+        }
+
+        .st-s {
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            color: var(--gold);
+            display: inline
+        }
+
+        .st-label {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: .5rem
+        }
+
+        /* TESTIMONIALS */
+        #testi {
+            padding: 7rem 5%;
+            background: #fff
+        }
+
+        .testi-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem
+        }
+
+        .t-card {
+            padding: 2.5rem;
+            border: 1px solid var(--beige);
+            transition: border-color .3s, transform .35s
+        }
+
+        .t-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px)
+        }
+
+        .t-q {
+            font-family: var(--serif);
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: .5;
+            margin-bottom: 1rem;
+            opacity: .3
+        }
+
+        .t-card p {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--text);
+            margin-bottom: 1.5rem
+        }
+
+        .t-auth {
+            display: flex;
+            align-items: center;
+            gap: .8rem
+        }
+
+        .t-auth img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold)
+        }
+
+        .t-auth strong {
+            display: block;
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--charcoal)
+        }
+
+        .t-auth span {
+            font-size: .75rem;
+            color: var(--muted)
+        }
+
+        /* NEWSLETTER */
+        #newsletter {
+            padding: 6rem 5%;
+            background: var(--charcoal2);
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        #newsletter::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=40') center/cover no-repeat;
+            opacity: .05
+        }
+
+        .nl-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto
+        }
+
+        .nl-inner h2 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: .8rem
+        }
+
+        .nl-inner h2 em {
+            font-style: italic;
+            color: var(--gold)
+        }
+
+        .nl-inner p {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .45);
+            margin-bottom: 2.5rem;
+            line-height: 1.7
+        }
+
+        .nl-form {
+            display: flex;
+            gap: 0;
+            max-width: 440px;
+            margin: 0 auto;
+            border: 1px solid rgba(184, 151, 62, .3)
+        }
+
+        .nl-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: .85rem 1.2rem;
+            color: #fff;
+            font-family: var(--sans);
+            font-size: .9rem;
+            outline: none
+        }
+
+        .nl-form input::placeholder {
+            color: rgba(255, 255, 255, .3)
+        }
+
+        .nl-form button {
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            padding: .85rem 1.5rem;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background .3s;
+            white-space: nowrap
+        }
+
+        .nl-form button:hover {
+            background: var(--gold2)
+        }
+
+        /* CONTACT */
+        #contact {
+            padding: 7rem 5%;
+            background: var(--ivory)
+        }
+
+        .cont-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 5rem;
+            align-items: start
+        }
+
+        .ci {
+            margin-bottom: 1.5rem
+        }
+
+        .ci strong {
+            display: block;
+            font-size: .68rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .3rem;
+            font-weight: 700
+        }
+
+        .ci span {
+            font-size: .9rem;
+            color: var(--muted)
+        }
+
+        .cont-form {}
+
+        .fg {
+            margin-bottom: 1.2rem
+        }
+
+        .fg label {
+            display: block;
+            font-size: .68rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: .5rem;
+            font-weight: 600
+        }
+
+        .fg input,
+        .fg textarea,
+        .fg select {
+            width: 100%;
+            background: #fff;
+            border: 1px solid var(--beige);
+            padding: .82rem 1rem;
+            font-family: var(--sans);
+            font-size: .9rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color .3s;
+            appearance: none;
+            border-radius: 0
+        }
+
+        .fg input:focus,
+        .fg textarea:focus,
+        .fg select:focus {
+            border-color: var(--gold)
+        }
+
+        .fg textarea {
+            resize: vertical
+        }
+
+        .fr {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem
+        }
+
+        .btn-charcoal {
+            display: inline-block;
+            background: var(--charcoal);
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            padding: .9rem 2.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background .3s, transform .3s;
+            width: 100%;
+            text-align: center
+        }
+
+        .btn-charcoal:hover {
+            background: var(--charcoal2);
+            transform: translateY(-2px)
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--charcoal);
+            padding: 4.5rem 5% 1.5rem
+        }
+
+        .ft-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2.2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .ft-logo {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: .25em;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: .8rem
+        }
+
+        .ft-brand p {
+            font-size: .85rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, .35);
+            max-width: 240px;
+            margin-bottom: 1.5rem
+        }
+
+        .socials {
+            display: flex;
+            gap: .6rem
+        }
+
+        .socials a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 255, 255, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .35);
+            font-size: .68rem;
+            font-weight: 700;
+            transition: all .3s
+        }
+
+        .socials a:hover {
+            border-color: var(--gold);
+            color: var(--gold)
+        }
+
+        .ft-col h4 {
+            font-size: .68rem;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .5);
+            margin-bottom: 1.2rem;
+            font-weight: 600
+        }
+
+        .ft-col ul li {
+            margin-bottom: .7rem
+        }
+
+        .ft-col ul li a {
+            font-size: .85rem;
+            color: rgba(255, 255, 255, .3);
+            transition: color .3s
+        }
+
+        .ft-col ul li a:hover {
+            color: var(--gold)
+        }
+
+        .ft-bottom {
+            max-width: 1200px;
+            margin: 1.2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .18)
+        }
+
+        /* REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity .9s var(--ease-out), transform .9s var(--ease-out)
+        }
+
+        .reveal.left {
+            transform: translateX(-50px)
+        }
+
+        .reveal.right {
+            transform: translateX(50px)
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translate(0)
+        }
+
+        .d1 {
+            transition-delay: .1s
+        }
+
+        .d2 {
+            transition-delay: .2s
+        }
+
+        .d3 {
+            transition-delay: .3s
+        }
+
+        .d4 {
+            transition-delay: .4s
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:1050px) {
+            #hero {
+                grid-template-columns: 1fr;
+                height: auto
+            }
+
+            .hero-left {
+                height: 55svh
+            }
+
+            .hero-right {
+                padding: 4rem 5%
+            }
+
+            .hero-right::before {
+                display: none
+            }
+
+            .hero-scroll-v {
+                display: none
+            }
+
+            .coll-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 300px 300px
+            }
+
+            .coll-grid .coll-card:first-child {
+                grid-column: span 2
+            }
+
+            .about-grid,
+            .cont-grid {
+                grid-template-columns: 1fr
+            }
+
+            .about-float {
+                right: 0
+            }
+
+            .about-year {
+                left: 0
+            }
+
+            .prod-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .lb-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 220px 220px 220px
+            }
+
+            .lb-item.wide {
+                grid-column: span 1
+            }
+
+            .lb-item.tall {
+                grid-row: span 1
+            }
+
+            .craft-steps {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .testi-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .ft-top {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .menu-btn {
+                display: flex
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                max-width: 300px
+            }
+        }
+
+        @media(max-width:640px) {
+            .coll-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto
+            }
+
+            .coll-grid .coll-card {
+                height: 320px;
+                grid-column: span 1
+            }
+
+            .prod-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .testi-grid {
+                grid-template-columns: 1fr
+            }
+
+            .craft-steps {
+                grid-template-columns: 1fr
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .lb-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .ft-top {
+                grid-template-columns: 1fr
+            }
+
+            .ft-bottom {
+                flex-direction: column;
+                gap: .4rem;
+                text-align: center
+            }
+
+            .fr {
+                grid-template-columns: 1fr
+            }
+
+            .nl-form {
+                flex-direction: column;
+                border: none;
+                gap: .5rem
+            }
+
+            .nl-form input {
+                border: 1px solid rgba(184, 151, 62, .3)
+            }
+
+            .nl-form button {
+                width: 100%
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <div class="nav-logo">VELOUR</div>
+        <ul class="nav-links">
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#lookbook">Lookbook</a></li>
+            <li><a href="#featured">Shop</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#lookbook">Lookbook</a>
+        <a href="#featured">Shop</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-left">
+            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1200&q=90" alt="Fashion" />
+        </div>
+        <div class="hero-right">
+            <span class="hero-eyebrow">New Collection — SS 2025</span>
+            <h1 class="hero-h1">Style is<br><em>Intention</em><br>Made Visible</h1>
+            <p class="hero-p">VELOUR is a contemporary luxury label crafted for those who understand that clothing is
+                more than fabric — it is a statement of presence, an architecture of self.</p>
+            <div class="hero-btns">
+                <a href="#collections" class="btn-gold">Explore Collections</a>
+                <a href="#about" class="btn-light">Our Story</a>
+            </div>
+            <div class="hero-scroll-v"><span>Scroll</span>
+                <div class="scroll-vline"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE 1 -->
+    <div class="mq-wrap">
+        <div class="mq-track">
+            <span>Luxury Ready-to-Wear</span><span class="sep"></span><span>Couture Craftsmanship</span><span
+                class="sep"></span><span>Sustainable Fabrics</span><span class="sep"></span><span>Timeless
+                Silhouettes</span><span class="sep"></span><span>Global Heritage</span><span class="sep"></span>
+            <span>Luxury Ready-to-Wear</span><span class="sep"></span><span>Couture Craftsmanship</span><span
+                class="sep"></span><span>Sustainable Fabrics</span><span class="sep"></span><span>Timeless
+                Silhouettes</span><span class="sep"></span><span>Global Heritage</span><span class="sep"></span>
+        </div>
+    </div>
+
+    <!-- COLLECTIONS -->
+    <section id="collections">
+        <div style="max-width:1200px;margin:0 auto">
+            <div class="col-head">
+                <div class="col-head-left">
+                    <span class="lbl">SS 2025</span>
+                    <h2 class="sec-h">New Season<br><em>Collections</em></h2>
+                </div>
+                <a href="#featured" class="view-all">View All Collections</a>
+            </div>
+            <div class="coll-grid">
+                <div class="coll-card reveal">
+                    <div class="coll-card-img"><img
+                            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=85"
+                            alt="Collection" /></div>
+                    <div class="coll-body"><span class="coll-season">Spring / Summer 2025</span>
+                        <h3>The Ivory Edit</h3><span class="coll-link">Explore Collection &rsaquo;</span>
+                    </div>
+                </div>
+                <div class="coll-card reveal d1">
+                    <div class="coll-card-img"><img
+                            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85"
+                            alt="Collection" /></div>
+                    <div class="coll-body"><span class="coll-season">Resort 2025</span>
+                        <h3>Midnight Desert</h3><span class="coll-link">Explore &rsaquo;</span>
+                    </div>
+                </div>
+                <div class="coll-card reveal d2">
+                    <div class="coll-card-img"><img
+                            src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=85"
+                            alt="Collection" /></div>
+                    <div class="coll-body"><span class="coll-season">Limited Edition</span>
+                        <h3>Raw & Refined</h3><span class="coll-link">Explore &rsaquo;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-imgs reveal left">
+                <div class="about-main"><img
+                        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=85" alt="Atelier" />
+                </div>
+                <div class="about-float"><img
+                        src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=400&q=80" alt="Detail" />
+                </div>
+                <div class="about-year"><strong>2010</strong><span>Est. Mumbai</span></div>
+            </div>
+            <div class="about-copy reveal right">
+                <span class="lbl">Our Story</span>
+                <h2 class="sec-h">Born from a Love of<br><em>Exceptional Cloth</em></h2>
+                <p class="body">VELOUR was founded in 2010 by designer Ananya Rao in a small Mumbai atelier. Starting
+                    with a single silk blouse that sold out in three days, the brand has grown into an internationally
+                    recognised luxury label with flagship stores in Mumbai, Delhi, Dubai, and London.</p>
+                <p class="body">Every VELOUR piece is designed in-house and produced in limited quantities. We work
+                    exclusively with certified artisan mills in India, Italy, and Japan — sourcing only materials that
+                    meet our standards for quality, ethics, and environmental responsibility.</p>
+                <div class="about-features">
+                    <div class="af">Hand-finished in certified Indian ateliers</div>
+                    <div class="af">Deadstock &amp; GOTS-certified organic fabrics</div>
+                    <div class="af">Carbon-neutral shipping &amp; responsible packaging</div>
+                    <div class="af">Made-to-order and bespoke service available</div>
+                </div>
+                <a href="#collections" class="btn-gold" style="display:inline-block;margin-top:2rem">Discover the
+                    Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE 2 -->
+    <div class="mq-wrap light">
+        <div class="mq-track">
+            <span>Mumbai</span><span class="sep"></span><span>Delhi</span><span
+                class="sep"></span><span>Dubai</span><span class="sep"></span><span>London</span><span
+                class="sep"></span><span>Paris</span><span class="sep"></span><span>Tokyo</span><span
+                class="sep"></span><span>New York</span><span class="sep"></span><span>Singapore</span><span
+                class="sep"></span>
+            <span>Mumbai</span><span class="sep"></span><span>Delhi</span><span
+                class="sep"></span><span>Dubai</span><span class="sep"></span><span
+                class="sep"></span><span>London</span><span class="sep"></span><span>Paris</span><span
+                class="sep"></span><span>Tokyo</span><span class="sep"></span><span>New York</span><span
+                class="sep"></span><span>Singapore</span><span class="sep"></span>
+        </div>
+    </div>
+
+    <!-- CRAFT -->
+    <section id="craft">
+        <div class="craft-inner">
+            <div style="text-align:center">
+                <span class="lbl">The VELOUR Approach</span>
+                <h2 class="sec-h center" style="color:#fff">Our Process Is<br><em>Our Promise</em></h2>
+            </div>
+            <div class="craft-steps">
+                <div class="cs-card reveal">
+                    <div class="cs-num">01</div>
+                    <h3>Concept</h3>
+                    <p>Every collection begins with a narrative — a season's mood expressed through colour stories,
+                        cultural references, and tactile textures explored in our design studio.</p>
+                    <div class="cs-line"></div>
+                </div>
+                <div class="cs-card reveal d1">
+                    <div class="cs-num">02</div>
+                    <h3>Material</h3>
+                    <p>We source only the finest certified fabrics from partner mills in India, Italy, and Japan —
+                        selecting for drape, hand-feel, and sustainable provenance.</p>
+                    <div class="cs-line"></div>
+                </div>
+                <div class="cs-card reveal d2">
+                    <div class="cs-num">03</div>
+                    <h3>Construction</h3>
+                    <p>Each piece is cut, sewn, and finished by hand in our Mumbai atelier. We run no fast-fashion
+                        production lines. Quality over quantity, always.</p>
+                    <div class="cs-line"></div>
+                </div>
+                <div class="cs-card reveal d3">
+                    <div class="cs-num">04</div>
+                    <h3>Release</h3>
+                    <p>Collections launch in strictly limited quantities — each piece individually numbered. Once sold,
+                        it is never reproduced.</p>
+                    <div class="cs-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section id="featured">
+        <div style="max-width:1200px;margin:0 auto;padding:0 0 0 0">
+            <div class="col-head" style="margin-bottom:2.5rem">
+                <div>
+                    <span class="lbl">Current Selection</span>
+                    <h2 class="sec-h">Featured <em>Pieces</em></h2>
+                </div>
+                <a href="#contact" class="view-all">Request a Styling Session</a>
+            </div>
+            <div class="prod-grid">
+                <div class="prod-card reveal">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1551163943-3f7fb6b44b5e?w=600&q=80" alt="" /><span
+                            class="prod-tag">New</span></div>
+                    <div class="prod-body">
+                        <h4>The Silk Asymmetric Drape</h4><span class="cat">SS 2025 Collection</span>
+                        <div class="price">&#8377; 38,500</div>
+                        <div class="prod-colors"><span class="pc" style="background:#f5f0e8;"></span><span class="pc"
+                                style="background:#1a1814;"></span><span class="pc" style="background:#c77b6e;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-card reveal d1">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80" alt="" /><span
+                            class="prod-tag">Limited</span></div>
+                    <div class="prod-body">
+                        <h4>Structured Linen Blazer</h4><span class="cat">Raw &amp; Refined</span>
+                        <div class="price">&#8377; 52,000</div>
+                        <div class="prod-colors"><span class="pc" style="background:#d4c5b3;"></span><span class="pc"
+                                style="background:#3a3228;"></span></div>
+                    </div>
+                </div>
+                <div class="prod-card reveal d2">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80" alt="" />
+                    </div>
+                    <div class="prod-body">
+                        <h4>Cashmere Wrap Coat</h4><span class="cat">Resort 2025</span>
+                        <div class="price">&#8377; 1,24,000</div>
+                        <div class="prod-colors"><span class="pc" style="background:#8a8070;"></span><span class="pc"
+                                style="background:#f5f0e8;"></span><span class="pc" style="background:#1a1814;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-card reveal d3">
+                    <div class="prod-img"><img
+                            src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&q=80" alt="" /><span
+                            class="prod-tag">Bestseller</span></div>
+                    <div class="prod-body">
+                        <h4>The Ivory Minimal Dress</h4><span class="cat">The Ivory Edit</span>
+                        <div class="price">&#8377; 28,000</div>
+                        <div class="prod-colors"><span class="pc" style="background:#f8f5ef;"></span><span class="pc"
+                                style="background:#e8e0d0;"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOOKBOOK -->
+    <section id="lookbook">
+        <div class="lb-inner">
+            <div style="text-align:center">
+                <span class="lbl">SS 2025 Lookbook</span>
+                <h2 class="sec-h center" style="color:#fff">The <em>Art</em> of Dressing</h2>
+            </div>
+            <div class="lb-grid">
+                <div class="lb-item tall reveal"><img
+                        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=700&q=80" alt="" /></div>
+                <div class="lb-item wide reveal d1"><img
+                        src="https://images.unsplash.com/photo-1562572159-4efc207f5aff?w=1000&q=80" alt="" /></div>
+                <div class="lb-item reveal d2"><img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="" /></div>
+                <div class="lb-item reveal d3"><img
+                        src="https://images.unsplash.com/photo-1503342564462-7f0e7bc0e8ef?w=600&q=80" alt="" /></div>
+                <div class="lb-item reveal"><img
+                        src="https://images.unsplash.com/photo-1551803091-e20673f15770?w=600&q=80" alt="" /></div>
+                <div class="lb-item wide reveal d1"><img
+                        src="https://images.unsplash.com/photo-1559551409-dadc959f76b8?w=1000&q=80" alt="" /></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats">
+        <div class="stats-grid">
+            <div class="st-item reveal"><span class="st-n" data-target="15">0</span><span class="st-s"></span>
+                <div class="st-label">Years in Fashion</div>
+            </div>
+            <div class="st-item reveal d1"><span class="st-n" data-target="48">0</span><span class="st-s">+</span>
+                <div class="st-label">Annual Pieces</div>
+            </div>
+            <div class="st-item reveal d2"><span class="st-n" data-target="4">0</span><span class="st-s"></span>
+                <div class="st-label">Flagship Stores</div>
+            </div>
+            <div class="st-item reveal d3"><span class="st-n" data-target="12">0</span><span class="st-s"></span>
+                <div class="st-label">Global Stockists</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testi">
+        <div style="max-width:1200px;margin:0 auto">
+            <div style="text-align:center;margin-bottom:3rem">
+                <span class="lbl">Client Voices</span>
+                <h2 class="sec-h center">Worn by Those Who<br><em>Know the Difference</em></h2>
+            </div>
+            <div class="testi-grid">
+                <div class="t-card reveal">
+                    <div class="t-q">"</div>
+                    <p>I wore a VELOUR piece to the London Fashion Week dinner and received more compliments than I have
+                        for any garment in twenty years. The quality is genuinely peerless.</p>
+                    <div class="t-auth"><img
+                            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="" />
+                        <div><strong>Isabelle Laurent</strong><span>Creative Director, Paris</span></div>
+                    </div>
+                </div>
+                <div class="t-card reveal d1">
+                    <div class="t-q">"</div>
+                    <p>VELOUR is the only Indian label I recommend to my international clients without hesitation. The
+                        craftsmanship rivals any European house I have worked with.</p>
+                    <div class="t-auth"><img
+                            src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&q=80" alt="" />
+                        <div><strong>Divya Kapoor</strong><span>Celebrity Stylist, Mumbai</span></div>
+                    </div>
+                </div>
+                <div class="t-card reveal d2">
+                    <div class="t-q">"</div>
+                    <p>My made-to-order cashmere coat arrived with a handwritten note from the designer. In a world of
+                        automated luxury, that kind of personal touch is everything.</p>
+                    <div class="t-auth"><img
+                            src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&q=80" alt="" />
+                        <div><strong>Yasmin Al-Sayed</strong><span>Art Collector, Dubai</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter">
+        <div class="nl-inner">
+            <h2>Become Part of the<br><em>VELOUR Circle</em></h2>
+            <p>Receive early access to new collections, invitation-only events, and styling consultations reserved
+                exclusively for our community.</p>
+            <form class="nl-form" onsubmit="return false">
+                <input type="email" placeholder="Your email address" />
+                <button type="submit">Join</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="cont-grid">
+            <div class="reveal left">
+                <span class="lbl">Connect with Us</span>
+                <h2 class="sec-h">Request a Styling<br>Session or Enquire<br><em>About Bespoke</em></h2>
+                <p class="body" style="margin-top:1.2rem">For personal styling, bulk orders, press, or partnership
+                    inquiries — our team is here to assist you.</p>
+                <div style="margin-top:2rem">
+                    <div class="ci"><strong>Studio &amp; Flagship</strong><span>Bandra West, Mumbai — VELOUR House, Hill
+                            Road</span></div>
+                    <div class="ci"><strong>Email</strong><span>hello@velourofficial.com</span></div>
+                    <div class="ci"><strong>Phone</strong><span>+91 98765 99999</span></div>
+                    <div class="ci"><strong>Bespoke Appointments</strong><span>By invitation only — contact us to
+                            schedule</span></div>
+                </div>
+            </div>
+            <div class="cont-form reveal right">
+                <form id="cForm">
+                    <div class="fr">
+                        <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required /></div>
+                        <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" required />
+                        </div>
+                    </div>
+                    <div class="fg"><label>Enquiry Type</label>
+                        <select>
+                            <option>Ready-to-Wear Purchase</option>
+                            <option>Bespoke / Made-to-Order</option>
+                            <option>Styling Session</option>
+                            <option>Press &amp; Media</option>
+                            <option>Brand Collaboration</option>
+                        </select>
+                    </div>
+                    <div class="fg"><label>Message</label><textarea rows="4"
+                            placeholder="Tell us what you are looking for..."></textarea></div>
+                    <button type="submit" class="btn-charcoal">Send Enquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="ft-top">
+            <div class="ft-brand">
+                <div class="ft-logo">VELOUR</div>
+                <p>Contemporary luxury fashion — designed in India, worn by the world. Limited quantities. Lasting
+                    quality.</p>
+                <div class="socials"><a href="#">IN</a><a href="#">PI</a><a href="#">FB</a><a href="#">TK</a></div>
+            </div>
+            <div class="ft-col">
+                <h4>Collections</h4>
+                <ul>
+                    <li><a href="#">SS 2025</a></li>
+                    <li><a href="#">Resort 2025</a></li>
+                    <li><a href="#">Archive</a></li>
+                    <li><a href="#">Lookbook</a></li>
+                </ul>
+            </div>
+            <div class="ft-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Ready-to-Wear</a></li>
+                    <li><a href="#">Bespoke Orders</a></li>
+                    <li><a href="#">Styling Sessions</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="ft-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About VELOUR</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Press Room</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="ft-bottom">
+            <p>2025 VELOUR Luxury Fashion. All rights reserved.</p>
+            <p>Privacy Policy · Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), { passive: true });
+        const menuBtn = document.getElementById('menuBtn'), mobileNav = document.getElementById('mobileNav');
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+            const s = menuBtn.querySelectorAll('span');
+            if (mobileNav.classList.contains('open')) { s[0].style.transform = 'translateY(6px) rotate(45deg)'; s[1].style.opacity = 0; s[2].style.transform = 'translateY(-6px) rotate(-45deg)' }
+            else { s.forEach(x => { x.style.transform = ''; x.style.opacity = '' }) }
+        });
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileNav.classList.remove('open'); menuBtn.querySelectorAll('span').forEach(x => { x.style.transform = ''; x.style.opacity = '' }) }));
+        const ro = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); ro.unobserve(x.target) } }) }, { threshold: .12 });
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+        function count(el, t) { let v = 0; const step = t / 90; const tm = setInterval(() => { v += step; if (v >= t) { v = t; clearInterval(tm) } el.textContent = Math.floor(v) }, 16) }
+        const co = new IntersectionObserver(e => { if (e[0].isIntersecting) { document.querySelectorAll('.st-n').forEach(el => count(el, +el.dataset.target)); co.disconnect() } }, { threshold: .3 });
+        const ss = document.getElementById('stats'); if (ss) co.observe(ss);
+        document.getElementById('cForm').addEventListener('submit', function (e) { e.preventDefault(); const b = this.querySelector('button'); b.textContent = 'Enquiry Received — We will be in touch.'; b.style.background = '#2d7a4f'; this.reset(); setTimeout(() => { b.textContent = 'Send Enquiry'; b.style.background = '' }, 3500) });
+    </script>
+</body>
+
+</html>
