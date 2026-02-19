@@ -1576,13 +1576,11 @@
   `;
             lc.appendChild(l);
         }
-
         // Donate amount buttons
         function selectAmount(btn) {
             document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         }
-
         // Progress bar animation trigger
         const progressObs = new IntersectionObserver((entries) => {
             entries.forEach(el => {
